@@ -1,10 +1,10 @@
 # create weeather dataset
 library(readxl)
-airfrost_1960_2021 <- read_excel("~/Documents/r-projects/Lyrics_Weather/music-and-weather/data/weather/airfrost_1960.2021.xlsx")
-daysrain_1950_2021 <- read_excel("~/Documents/r-projects/Lyrics_Weather/music-and-weather/data/weather/daysrain_1950.2021.xlsx")
-maxtemp_1950_2021 <- read_excel("~/Documents/r-projects/Lyrics_Weather/music-and-weather/data/weather/maxtemp_1950.2021.xlsx")
-rainfall_1950_2021 <- read_excel("~/Documents/r-projects/Lyrics_Weather/music-and-weather/data/weather/rainfall_1950.2021.xlsx")
-sunshine_1950_2021 <- read_excel("~/Documents/r-projects/Lyrics_Weather/music-and-weather/data/weather/sunshine_1950.2021.xlsx")
+airfrost_1960_2021 <- read_excel("../data/weather/airfrost_1960.2021.xlsx")
+daysrain_1950_2021 <- read_excel("../data/weather/daysrain_1950.2021.xlsx")
+maxtemp_1950_2021 <- read_excel("../data/weather/maxtemp_1950.2021.xlsx")
+rainfall_1950_2021 <- read_excel("../data/weather/rainfall_1950.2021.xlsx")
+sunshine_1950_2021 <- read_excel("../data/weather/sunshine_1950.2021.xlsx")
 
 d.airfrost =airfrost_1960_2021 %>% 
   select(-win:-ann) %>%
@@ -37,6 +37,7 @@ weather_data$month <- factor(weather_data$month,
                                         "June", "July","August", "September", "October", 
                                         "November","December"))
 
+# save
 write_csv(weather_data, "weather_data.csv")
 
 

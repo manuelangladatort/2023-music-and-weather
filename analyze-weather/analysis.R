@@ -1,13 +1,8 @@
 ################################################################################
 # Music and weather associations
 # Author: Manuel Anglada-Tort
-# Script: Main analysis paper
+# Script: Script to prepare weather data
 ################################################################################
-
-
-##################
-# import section
-##################
 # load libraries
 library(readr)
 library(tidyverse)
@@ -229,8 +224,7 @@ plot(out_daysrain)
 #################################
 # Figure 3: Top10 vs Bottom10
 #################################
-spotify_top_bottom_aggregate <- read_csv("~/Documents/r-projects/Lyrics_Weather/music-and-weather/data/spotify_top_bottom_aggregate.csv")
-spotify_top10_bottom10 <- read_csv("~/Documents/r-projects/Lyrics_Weather/music-and-weather/data/spotify_top10_bottom10_aggregate.csv")
+spotify_top10_bottom10 <- read_csv("../data/spotify_top10_bottom10_aggregate.csv")
 
 # prepare data
 weather_data <- read_csv("../data/weather_data.csv") %>% 
