@@ -1,0 +1,2 @@
+# Here comes the sun: Music features of popular songs reflect prevailing weather conditions
+Data and analysis code supporting the manuscript, "Here comes the sun: Music features of popular songs reflect prevailing weather conditions" 

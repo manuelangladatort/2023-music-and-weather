@@ -1,0 +1,7 @@
+.Rproj.user/*
+.Rhistory
+.RData
+.Ruserdata
+plots/
+data/
+old-scripts/*
