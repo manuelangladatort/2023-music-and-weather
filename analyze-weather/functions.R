@@ -1,4 +1,8 @@
-# supporting function analysis
+################################################################################
+# RSOS : Music features of popular songs reflect prevailing weather conditions
+# Author: Manuel Anglada-Tort
+# Script: supporting functions
+################################################################################
 lower_ci <- function(mean, se, n, conf_level = 0.95){
   lower_ci <- mean - qt(1 - ((1 - conf_level) / 2), n - 1) * se
 }
@@ -19,10 +23,8 @@ plot_weather_time = function(data, color, filtered_metric, title, SIZE){
               m_sunshine = mean(sunshine),
               se_sun = sd(sunshine) / sqrt(n),
               m_daysrain = mean(daysrain),
-              se_rain = sd(daysrain) / sqrt(n),
-              m_airfrost = mean(airfrost),
-              se_airfrost = sd(airfrost) / sqrt(n)) %>%
-    pivot_longer(cols = m_temperature:se_airfrost, names_to = "metric", values_to = "value")
+              se_rain = sd(daysrain) / sqrt(n)) %>%
+    pivot_longer(cols = m_temperature:se_rain, names_to = "metric", values_to = "value")
   
   data_to_plot_means = data_to_plot0 %>%
     filter(substr(metric,1,2) == "m_") %>%
@@ -30,8 +32,8 @@ plot_weather_time = function(data, color, filtered_metric, title, SIZE){
     select(year, metric, mean)
  
   data_to_plot_means$metric <- factor(data_to_plot_means$metric, 
-                                      levels = c("m_temperature", "m_sunshine", "m_daysrain", "m_airfrost"),
-                                      labels = c("Temperature", "Sunshine", "Rain", "Airfrost"))
+                                      levels = c("m_temperature", "m_sunshine", "m_daysrain"),
+                                      labels = c("Temperature", "Sunshine", "Rain"))
   
   plot <- data_to_plot_means %>%
     filter(metric == filtered_metric) %>%
