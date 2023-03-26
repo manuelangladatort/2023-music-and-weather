@@ -135,7 +135,7 @@ data_long$measure <- factor(data_long$measure,
 # GAM 1
 out1 = gam(PCA1 ~ measure + s(value, by = measure), data = data_long, method = "REML") 
 s1 = summary(out1)
-s1 # see results. (Adj-R2 = 6.10 %)
+s1 # see results. (Adj-R2 = 6.09 %)
 
 # checks
 par(mfrow = c(2, 2))
@@ -266,8 +266,7 @@ plot_gam_facet(out1a,
 spotify_top10_bottom10 <- read_csv("../data/spotify_top10_bottom10_aggregate.csv")
 
 ## weather data
-weather_data <- read_csv("../data/weather_data.csv") %>% 
-  select(-rainfall, -airfrost)
+weather_data <- read_csv("../data/weather_data.csv") 
 
 top10_DT <- spotify_top10_bottom10 %>% 
   # merge datasets
