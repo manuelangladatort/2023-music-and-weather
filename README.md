@@ -1,6 +1,9 @@
 ## Here comes the sun: Music features of popular songs reflect prevailing weather conditions
 Data and analysis code supporting the manuscript, "Here comes the sun: Music features of popular songs reflect prevailing weather conditions", accepted in Royal Society Open Science. 
 
+Data and code have been archived within the Zenodo repository: https://zenodo.org/badge/latestdoi/562985935
+
+
 ## Analysis
 1. *analyze-weather/analysis.R:* main analysis code
 2. *analyze-weather/functions.R:* supporting methods
