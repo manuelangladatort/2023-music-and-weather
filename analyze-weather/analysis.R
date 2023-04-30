@@ -22,6 +22,7 @@ library(viridis)
 library(factoextra)
 library(psych)
 library(scales)
+library(ggpubr)
 
 source("functions.R") # supporting methods
 
@@ -118,11 +119,19 @@ figure1 = plot_grid(temp_time, temperature_hist,
 # 4. Figure 2: GAM + seasonal pattern
 ################################################################################
 
-# scaling by year works
-## raw variables are sig correlated
+# scaling by year effectively removes the confound of year-level trends
+
+## raw weather variables are correlated with year
 cor.test(weather_music_DT$year, weather_music_DT$raw.maxtemp)
-## normalized variables are not
+ggscatter(weather_music_DT, x = "year", y = "raw.maxtemp", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson")
+
+## normalized weather variables are not
 cor.test(weather_music_DT$year, weather_music_DT$maxtemp)
+ggscatter(weather_music_DT, x = "year", y = "maxtemp", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson")
 
 
 # long format
@@ -254,6 +263,27 @@ plot_gam_facet(out1a,
 
 # end control analysis
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+
+
+# you can also replicate these results with linear models
+
+## for example, PCA1 correlates positively with max temp
+ggscatter(weather_music_DT, x = "PCA1", y = "maxtemp", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson")
+
+## but PCA2 does not
+ggscatter(weather_music_DT, x = "PCA2", y = "maxtemp", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson")
+
+## and this cannot be explained by a confound of year
+ggscatter(weather_music_DT, x = "PCA1", y = "year", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson")
+ggscatter(weather_music_DT, x = "year", y = "maxtemp", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson")
 
 
 ################################################################################
