@@ -19,7 +19,7 @@ library(mgcViz) #visuals for mgcv
 library(cowplot)
 library(tidymv)
 library(viridis)
-library(factoextra) # pca
+library(factoextra) # PCA
 library(psych)
 library(scales)
 library(ggpubr)
